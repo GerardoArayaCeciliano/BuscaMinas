@@ -1,0 +1,11 @@
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.exe.config
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.exe
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\bin\Debug\BuscaMinas.pdb
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csproj.AssemblyReference.cache
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.Cell.resources
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.Form1.resources
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.Properties.Resources.resources
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csproj.GenerateResource.cache
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.csproj.CoreCompileInputs.cache
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.exe
+C:\Users\50671\Desktop\BuscaMinas\BuscaMinas\obj\Debug\BuscaMinas.pdb
