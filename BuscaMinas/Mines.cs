@@ -65,6 +65,14 @@ namespace BuscaMinas
                         {
                             cont++;
                         }
+                        if (TopRight(x, y))
+                        {
+                            cont++;
+                        }
+                        if (TopLeft(x, y))
+                        {
+                            cont++;
+                        }
                         if (Down(x, y))
                         {
                             cont++;
@@ -101,11 +109,83 @@ namespace BuscaMinas
                 return false;
             }
         }
+        public bool TopRight(int x, int y)
+        {
+            if (x != 0 && y!=6)
+            {
+                if (mine[x - 1, y+1] == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool TopLeft(int x, int y)
+        {
+            if (x != 0 && y != 0)
+            {
+                if (mine[x - 1, y - 1] == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
         public bool Down(int x, int y)
         {
             if (x != 6)
             {
                 if (mine[x + 1, y] == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool DownRight(int x, int y)
+        {
+            if (x != 6 && y != 6)
+            {
+                if (mine[x +1, y + 1] == -1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool DownLeft(int x, int y)
+        {
+            if (x != 6 && y != 0)
+            {
+                if (mine[x - 1, y - 1] == -1)
                 {
                     return true;
                 }
@@ -155,6 +235,11 @@ namespace BuscaMinas
                 return false;
             }
         }
+        public int getMine(int x,int y) 
+        {
+            return mine[x, y];
+        }
+
     }
 
 

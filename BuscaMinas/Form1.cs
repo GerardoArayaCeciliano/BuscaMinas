@@ -18,7 +18,6 @@ namespace BuscaMinas
             InitializeComponent();
             mine.InitializeMine();
             mine.CreateMine();
-           
             mine.CellNumber();
             mine.prinCell();
             InitializeContainer();
@@ -31,11 +30,19 @@ namespace BuscaMinas
         }
         private void InitializeContainer()
         {
-            for (int x = 0; x < 49; x++)
+            /*for (int x = 0; x < 49; x++)
             {
-                Cell c = new Cell();
-               
+                Cell c = new Cell(); 
                 containerCell.Controls.Add(c);
+            }*/
+            for(int x = 0; x < 7; x++) 
+            {
+                for(int y = 0; y < 7; y++) 
+                {
+                    Cell c = new Cell();
+                    c.setNumber(mine.getMine(x,y));
+                    containerCell.Controls.Add(c);
+                }
             }
         }
 
