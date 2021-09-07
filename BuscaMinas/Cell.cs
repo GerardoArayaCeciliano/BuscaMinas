@@ -21,7 +21,7 @@ namespace BuscaMinas
         {
 
         }
-        private void setNumber(int number) 
+        public void setNumber(int number) 
         {
             lblNumber.Text = number.ToString();
         }
