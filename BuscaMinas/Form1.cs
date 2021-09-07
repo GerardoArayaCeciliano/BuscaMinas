@@ -49,7 +49,7 @@ namespace BuscaMinas
         public void searchCell(int x,int y)
         {
             //LLAMAR EL METODO Para revisar las casillas
-            MessageBox.Show(mine.getMine(x,y).ToString());
+           // MessageBox.Show(mine.getMine(x,y).ToString());
 
         }
     }

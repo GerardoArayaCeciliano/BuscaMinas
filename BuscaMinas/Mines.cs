@@ -77,6 +77,14 @@ namespace BuscaMinas
                         {
                             cont++;
                         }
+                        if (DownLeft(x, y))
+                        {
+                            cont++;
+                        }
+                        if (DownRight(x, y))
+                        {
+                            cont++;
+                        }
                         if (Right(x, y))
                         {
                             cont++;
@@ -185,7 +193,7 @@ namespace BuscaMinas
         {
             if (x != 6 && y != 0)
             {
-                if (mine[x - 1, y - 1] == -1)
+                if (mine[x + 1, y - 1] == -1)
                 {
                     return true;
                 }

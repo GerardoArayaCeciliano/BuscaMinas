@@ -28,8 +28,7 @@ namespace BuscaMinas
             this.number = number;
             this.x = x;
             this.y = y;
-            //lblNumber.Text = number.ToString();
-            //lblNumber.Enabled = true;
+           // lblNumber.Text = number.ToString();
         }
 
         private void panelCell_Click(object sender, EventArgs e)
