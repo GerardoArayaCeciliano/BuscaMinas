@@ -34,10 +34,12 @@ namespace BuscaMinas
             // 
             // containerCell
             // 
+            this.containerCell.BackColor = System.Drawing.Color.White;
             this.containerCell.Location = new System.Drawing.Point(91, 25);
             this.containerCell.Name = "containerCell";
-            this.containerCell.Size = new System.Drawing.Size(459, 396);
+            this.containerCell.Size = new System.Drawing.Size(527, 396);
             this.containerCell.TabIndex = 0;
+            this.containerCell.Paint += new System.Windows.Forms.PaintEventHandler(this.containerCell_Paint);
             // 
             // Form1
             // 

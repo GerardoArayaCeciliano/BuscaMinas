@@ -41,5 +41,9 @@ namespace BuscaMinas
             }
         }
 
+        private void containerCell_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

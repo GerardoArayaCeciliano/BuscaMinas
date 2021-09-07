@@ -26,9 +26,6 @@ namespace BuscaMinas
             lblNumber.Text = number.ToString();
         }
 
-        private void Cell_Load(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }
