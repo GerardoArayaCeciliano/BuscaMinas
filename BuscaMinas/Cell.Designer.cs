@@ -37,7 +37,7 @@ namespace BuscaMinas
             // lblNumber
             // 
             this.lblNumber.AutoSize = true;
-            this.lblNumber.Location = new System.Drawing.Point(21, 15);
+            this.lblNumber.Location = new System.Drawing.Point(29, 15);
             this.lblNumber.Name = "lblNumber";
             this.lblNumber.Size = new System.Drawing.Size(13, 13);
             this.lblNumber.TabIndex = 0;
@@ -50,8 +50,13 @@ namespace BuscaMinas
             this.panelCell.Controls.Add(this.lblNumber);
             this.panelCell.Location = new System.Drawing.Point(0, 0);
             this.panelCell.Name = "panelCell";
-            this.panelCell.Size = new System.Drawing.Size(63, 46);
+            this.panelCell.Size = new System.Drawing.Size(66, 48);
             this.panelCell.TabIndex = 1;
+            this.panelCell.Click += new System.EventHandler(this.panelCell_Click);
+            this.panelCell.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCell_Paint);
+        
+            this.panelCell.MouseLeave += new System.EventHandler(this.panelCell_MouseLeave);
+            this.panelCell.MouseHover += new System.EventHandler(this.panelCell_MouseHover);
             // 
             // Cell
             // 

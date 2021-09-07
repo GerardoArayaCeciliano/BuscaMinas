@@ -26,6 +26,28 @@ namespace BuscaMinas
             lblNumber.Text = number.ToString();
         }
 
-     
+        private void panelCell_Click(object sender, EventArgs e)
+        {
+            //  MessageBox.Show(lblNumber.Text);
+            panelCell.BackColor = Color.Yellow;
+
+        }
+
+        private void panelCell_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelCell_MouseHover(object sender, EventArgs e)
+        {
+           panelCell.BackColor = Color.Blue;
+        }
+
+        private void panelCell_MouseLeave(object sender, EventArgs e)
+        {
+           panelCell.BackColor = Color.OrangeRed;
+        }
+
+       
     }
 }
