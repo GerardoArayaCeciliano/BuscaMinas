@@ -239,7 +239,6 @@ namespace BuscaMinas
         {
             return mine[x, y];
         }
-
     }
 
 

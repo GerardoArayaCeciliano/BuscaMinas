@@ -46,7 +46,7 @@ namespace BuscaMinas
             // 
             // panelCell
             // 
-            this.panelCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panelCell.BackColor = System.Drawing.Color.Green;
             this.panelCell.Controls.Add(this.lblNumber);
             this.panelCell.Location = new System.Drawing.Point(0, 0);
             this.panelCell.Name = "panelCell";
@@ -54,7 +54,6 @@ namespace BuscaMinas
             this.panelCell.TabIndex = 1;
             this.panelCell.Click += new System.EventHandler(this.panelCell_Click);
             this.panelCell.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCell_Paint);
-        
             this.panelCell.MouseLeave += new System.EventHandler(this.panelCell_MouseLeave);
             this.panelCell.MouseHover += new System.EventHandler(this.panelCell_MouseHover);
             // 
