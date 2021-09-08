@@ -1,26 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BuscaMinas
 {
     public partial class Form1 : Form
     {
-        Mines mine = new Mines();
+        Minefield minefield = new Minefield();
         public Form1()
         {
          
             InitializeComponent();
-            mine.InitializeMine();
-            mine.CreateMine();
-            mine.CellNumber();
-            mine.prinCell();
+
+            minefield.Build();
+            minefield.PrintField();
             InitializeContainer();
            
         }
@@ -36,7 +28,7 @@ namespace BuscaMinas
                 for(int y = 0; y < 7; y++) 
                 {
                     Cell cell= new Cell();
-                    cell.setNumber(mine.getMine(x,y),x,y);
+                    cell.SetValue(minefield.GetSector(x,y),x,y);
                     containerCell.Controls.Add(cell);
                 }
             }
@@ -49,7 +41,7 @@ namespace BuscaMinas
         public void searchCell(int x,int y)
         {
             //LLAMAR EL METODO Para revisar las casillas
-           // MessageBox.Show(mine.getMine(x,y).ToString());
+           // MessageBox.Show(minefield.getMine(x,y).ToString());
 
         }
     }

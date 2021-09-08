@@ -42,20 +42,20 @@ namespace BuscaMinas
             this.lblNumber.Size = new System.Drawing.Size(13, 13);
             this.lblNumber.TabIndex = 0;
             this.lblNumber.Text = ":)";
-            this.lblNumber.Click += new System.EventHandler(this.lblNumber_Click);
+            this.lblNumber.Click += new System.EventHandler(this.LblNumber_OnClick);
             // 
             // panelCell
             // 
-            this.panelCell.BackColor = System.Drawing.Color.Green;
+            this.panelCell.BackColor = System.Drawing.Color.Gray;
             this.panelCell.Controls.Add(this.lblNumber);
             this.panelCell.Location = new System.Drawing.Point(0, 0);
             this.panelCell.Name = "panelCell";
             this.panelCell.Size = new System.Drawing.Size(66, 48);
             this.panelCell.TabIndex = 1;
-            this.panelCell.Click += new System.EventHandler(this.panelCell_Click);
+            this.panelCell.Click += new System.EventHandler(this.PanelCell_OnClick);
             this.panelCell.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCell_Paint);
-            this.panelCell.MouseLeave += new System.EventHandler(this.panelCell_MouseLeave);
-            this.panelCell.MouseHover += new System.EventHandler(this.panelCell_MouseHover);
+            this.panelCell.MouseLeave += new System.EventHandler(this.PanelCell_OnMouseLeave);
+            this.panelCell.MouseHover += new System.EventHandler(this.PanelCell_OnMouseHover);
             // 
             // Cell
             // 
