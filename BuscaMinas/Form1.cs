@@ -6,6 +6,7 @@ namespace BuscaMinas
     public partial class Form1 : Form
     {
         Minefield minefield = new Minefield();
+       // private readonly Cell[,] MatCell = new Cell[7, 7];
         public Form1()
         {
          
@@ -27,9 +28,9 @@ namespace BuscaMinas
             {
                 for(int y = 0; y < 7; y++) 
                 {
-                    Cell cell= new Cell();
-                    cell.SetValue(minefield.GetSector(x,y),x,y);
-                    containerCell.Controls.Add(cell);
+                   // MatCell[x, y] = new Cell();
+                    //MatCell[x,y].SetValue(minefield.GetSector(x, y), x, y);
+                    containerCell.Controls.Add(minefield.GetSector(x, y));
                 }
             }
         }
@@ -40,6 +41,7 @@ namespace BuscaMinas
         }
         public void searchCell(int x,int y)
         {
+            minefield.Shearch(x, y);
             //LLAMAR EL METODO Para revisar las casillas
            // MessageBox.Show(minefield.getMine(x,y).ToString());
 

@@ -4,15 +4,17 @@ namespace BuscaMinas
 {
     class Minefield
     {
-        private readonly String[,] sectors = new String[7, 7];
-
+        
+        //private readonly String[,] sectors = new String[7, 7];
+        Cell[,] cells = new Cell[7,7];
         public Minefield()
         {
             for (int x = 0; x < 7; x++)
             {
                 for (int y = 0; y < 7; y++)
                 {
-                    sectors[x, y] = " ";
+                    cells[x, y] = new Cell();
+                    cells[x, y].SetValue(" ",false,false,x,y);
                 }
             }
         }
@@ -23,7 +25,7 @@ namespace BuscaMinas
             {
                 for (int c = 0; c < 7; c++)
                 {
-                    Console.Write(sectors[f, c] + " ");
+                    Console.Write(cells[f, c].Value + " ");
                 }
                 Console.WriteLine();
             }
@@ -37,7 +39,7 @@ namespace BuscaMinas
 
         private void GenerateMines()
         {
-            for (int x = 0; x < 8; x++)
+            for (int x = 0; x <10; x++)
             {
                 bool flag = false;
                 do
@@ -45,9 +47,9 @@ namespace BuscaMinas
                     Random rnd = new Random();
                     int randX = rnd.Next(7);
                     int randY= rnd.Next(7);
-                    if (sectors[randX, randY] != "💣")
+                    if (cells[randX, randY].Value != "💣")
                     {
-                        sectors[randX, randY] = "💣";
+                        cells[randX, randY].Value = "💣";
                         flag = true;
                     }
                 } while (!flag);
@@ -61,7 +63,7 @@ namespace BuscaMinas
                 for (int y = 0; y < 7; y++)
                 {
                     int count = 0;
-                    if (sectors[x, y] != "💣")
+                    if (cells[x, y].Value != "💣")
                     {
                         count += AnalizeTopLeft(x, y) ? 1 : 0;
                         count += AnalizeTop(x, y) ? 1 : 0;
@@ -76,7 +78,7 @@ namespace BuscaMinas
 
                         if (count > 0) 
                         { 
-                            sectors[x, y] = count.ToString();
+                            cells[x, y].Value = count.ToString();
                         }
                         
                     }
@@ -87,7 +89,7 @@ namespace BuscaMinas
         {
             if (x != 0)
             {
-                return (sectors[x - 1, y] == "💣");
+                return (cells[x - 1, y].Value == "💣");
             }
             return false;
         }
@@ -95,7 +97,7 @@ namespace BuscaMinas
         {
             if (x != 0 && y!=6)
             {
-                return (sectors[x - 1, y + 1] == "💣");
+                return (cells[x - 1, y + 1].Value== "💣");
             }
             return false;
         }
@@ -103,7 +105,7 @@ namespace BuscaMinas
         {
             if (x != 0 && y != 0)
             {
-                return (sectors[x - 1, y - 1] == "💣");
+                return (cells[x - 1, y - 1].Value== "💣");
             }   
             return false;       
         }
@@ -111,7 +113,7 @@ namespace BuscaMinas
         {
             if (x != 6)
             {
-                return (sectors[x + 1, y] == "💣");
+                return (cells[x + 1, y].Value == "💣");
             }
             return false;
         }
@@ -119,7 +121,7 @@ namespace BuscaMinas
         {
             if (x != 6 && y != 6)
             {
-                return (sectors[x + 1, y + 1] == "💣");
+                return (cells[x + 1, y + 1].Value == "💣");
             }
             return false;
         }
@@ -127,7 +129,7 @@ namespace BuscaMinas
         {
             if (x != 6 && y != 0)
             {
-                return (sectors[x + 1, y - 1] == "💣");
+                return (cells[x + 1, y - 1].Value== "💣");
             }
             return false;
         }
@@ -135,7 +137,7 @@ namespace BuscaMinas
         {
             if (y != 0)
             {
-                return (sectors[x, y - 1] == "💣");
+                return (cells[x, y - 1].Value == "💣");
             }
             return false;
         }
@@ -143,14 +145,220 @@ namespace BuscaMinas
         {
             if (y != 6)
             {
-                return (sectors[x, y + 1] == "💣");
+                return (cells[x, y + 1].Value == "💣");
             }
             return false;
         }
-        public String GetSector(int x,int y) 
+        public Cell GetSector(int x,int y) 
         {
-            return sectors[x, y];
+            return cells[x, y];
         }
+        public void  Shearch( int x,int y)
+        {
+             ShearchTop(x, y);
+             ShearchTopRight(x, y);
+             ShearchTopLeftt(x, y);
+             ShearchDown(x, y);
+             ShearchDownRight(x, y);
+             ShearchDownLeftt(x, y);
+             ShearchLeft(x, y);
+             ShearchRight(x, y);
+        }
+        private void ShearchTop(int px,int py)
+        {
+            for (int x = px-1; x >= 0; x--)
+            {
+                
+                if (cells[x, py].Value == " "&& cells[x, py].State==false) 
+                {
+                    cells[x, py].State = true;
+                    cells[x, py].ValuePanel();
+                } else if (cells[x, py].Value != " " && cells[x, py].Value!= "💣" && cells[x, py].State == false)
+                {
+                    cells[x, py].State = true;
+                    cells[x, py].ValuePanel();
+                    x = -1;
+                }
+                else
+                {
+                    x = -1;
+                }
+            }
+        }
+        private void ShearchTopRight(int px, int py)
+        {
+            for (int x = px-1; x >= 0; x--)
+            {
+                py++;
+                if (py<7) 
+                {
+                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                    }
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                        x = -1;
+                    }
+                    else
+                    {
+                        x = -1;
+                    }
+                }
+
+                
+            }
+        }
+        private void ShearchTopLeftt(int px, int py)
+        {
+            for (int x = px - 1; x >= 0; x--)
+            {
+                py--;
+                if (py >-1)
+                {
+                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                    }
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                        x = -1;
+                    }
+                    else
+                    {
+                        x = -1;
+                    }
+                }
+
+
+            }
+        }
+        private void ShearchDown(int px, int py)
+        {
+            for (int x = px+1; x<7; x++)
+            {
+
+                if (cells[x, py].Value == " " && cells[x, py].State == false)
+                {
+                    cells[x, py].State = true;
+                    cells[x, py].ValuePanel();
+                }
+                else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                {
+                    cells[x, py].State = true;
+                    cells[x, py].ValuePanel();
+                    x = 7;
+                }
+                else
+                {
+                    x = 7;
+                }
+            }
+        }
+        private void ShearchDownRight(int px, int py)
+        {
+            for (int x = px + 1; x < 7; x++)
+            {
+                py++;
+                if (py < 7)
+                {
+                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                    }
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                        x = 7;
+                    }
+                    else
+                    {
+                        x = 7;
+                    }
+                }
+            }
+        }
+        private void ShearchDownLeftt(int px, int py)
+        {
+            for (int x = px + 1; x <7; x++)
+            {
+                py--;
+                if (py > -1)
+                {
+                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                    }
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                        x =7;
+                    }
+                    else
+                    {
+                        x = 7;
+                    }
+                }
+            }
+        }
+        private void ShearchLeft(int x, int y)
+        {
+            //y--
+            for (int py = y - 1; py >= 0; py--) 
+            {
+                if (cells[x, py].Value == " " && cells[x, py].State == false)
+                {
+                    cells[x, py].State = true;
+                    cells[x, py].ValuePanel();
+                }
+                else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                {
+                    cells[x, py].State = true;
+                    cells[x, py].ValuePanel();
+                    py = -1;
+                }
+                else
+                {
+                    py = -1;
+                }
+            }
+        }
+       private void ShearchRight(int x, int y)
+        {
+            for (int py = y + 1; py<7; py++)
+            {
+                
+                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                      
+                }
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    {
+                        cells[x, py].State = true;
+                        cells[x, py].ValuePanel();
+                        py = 7;
+                    }
+                    else
+                    {
+                        py = 7;
+                    }
+                
+            }
+        }
+      
     }
+
 
 }

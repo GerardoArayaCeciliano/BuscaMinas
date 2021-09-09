@@ -7,9 +7,11 @@ namespace BuscaMinas
     
     public partial class Cell : UserControl
     {
-        private String value;
-        private int x, y;
-
+        public String Value { get; set; }
+        public bool Flags { get; set; }
+        public bool State { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
         public Cell()
         {
             InitializeComponent();
@@ -19,22 +21,33 @@ namespace BuscaMinas
         {
 
         }
-        public void SetValue(String value,int x,int y) 
+        public void SetValue(String Value,bool State,bool Flags,int x,int y) 
         {
-            this.value = value;
+            this.Value = Value;
+            this.State = State;
+            this.Flags = Flags;
             this.x = x;
             this.y = y;
-           // lblNumber.Text = number.ToString();
         }
 
         private void PanelCell_OnClick(object sender, EventArgs e)
         {
             //  MessageBox.Show(lblNumber.Text);
 
-            lblNumber.Text = value;
+            lblNumber.Text = this.Value;
+            this.State = true;
             panelCell.BackColor = Color.Gray;
+            panelCell.Enabled = false;
             Form1 form = (Form1)Application.OpenForms["Form1"];
-            form.searchCell(x,y);
+            form.searchCell(this.x,this.y);
+
+        }
+        public void ValuePanel()
+        {
+            lblNumber.Text = this.Value;
+            panelCell.BackColor = Color.LightGray; ;
+            panelCell.Enabled = false;
+
         }
 
         private void panelCell_Paint(object sender, PaintEventArgs e)
@@ -44,14 +57,14 @@ namespace BuscaMinas
 
         private void PanelCell_OnMouseHover(object sender, EventArgs e)
         {// 
-          panelCell.BackColor = Color.LightGray;
+         // panelCell.BackColor = Color.LightGray;
         }
 
         private void PanelCell_OnMouseLeave(object sender, EventArgs e)
         {
-          panelCell.BackColor =Color.Gray;
+          //panelCell.BackColor =Color.Gray;
         }
-
+        
        
     }
 }
