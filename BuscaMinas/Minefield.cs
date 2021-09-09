@@ -169,11 +169,11 @@ namespace BuscaMinas
             for (int x = px-1; x >= 0; x--)
             {
                 
-                if (cells[x, py].Value == " "&& cells[x, py].State==false) 
+                if (cells[x, py].Value == " "&& !cells[x, py].State &&!cells[x,py].Flags) 
                 {
                     cells[x, py].State = true;
                     cells[x, py].ValuePanel();
-                } else if (cells[x, py].Value != " " && cells[x, py].Value!= "💣" && cells[x, py].State == false)
+                } else if (cells[x, py].Value != " " && cells[x, py].Value!= "💣" && !cells[x, py].State && !cells[x, py].Flags)
                 {
                     cells[x, py].State = true;
                     cells[x, py].ValuePanel();
@@ -192,12 +192,12 @@ namespace BuscaMinas
                 py++;
                 if (py<7) 
                 {
-                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    if (cells[x, py].Value == " " && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
                     }
-                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
@@ -219,12 +219,12 @@ namespace BuscaMinas
                 py--;
                 if (py >-1)
                 {
-                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    if (cells[x, py].Value == " " && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
                     }
-                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
@@ -244,12 +244,12 @@ namespace BuscaMinas
             for (int x = px+1; x<7; x++)
             {
 
-                if (cells[x, py].Value == " " && cells[x, py].State == false)
+                if (cells[x, py].Value == " " && !cells[x, py].State && !cells[x, py].Flags)
                 {
                     cells[x, py].State = true;
                     cells[x, py].ValuePanel();
                 }
-                else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && !cells[x, py].State && !cells[x, py].Flags)
                 {
                     cells[x, py].State = true;
                     cells[x, py].ValuePanel();
@@ -268,12 +268,12 @@ namespace BuscaMinas
                 py++;
                 if (py < 7)
                 {
-                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    if (cells[x, py].Value == " " && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
                     }
-                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
@@ -293,12 +293,12 @@ namespace BuscaMinas
                 py--;
                 if (py > -1)
                 {
-                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    if (cells[x, py].Value == " " && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
                     }
-                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
@@ -316,12 +316,12 @@ namespace BuscaMinas
             //y--
             for (int py = y - 1; py >= 0; py--) 
             {
-                if (cells[x, py].Value == " " && cells[x, py].State == false)
+                if (cells[x, py].Value == " " && !cells[x, py].State && !cells[x, py].Flags)
                 {
                     cells[x, py].State = true;
                     cells[x, py].ValuePanel();
                 }
-                else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && !cells[x, py].State && !cells[x, py].Flags)
                 {
                     cells[x, py].State = true;
                     cells[x, py].ValuePanel();
@@ -338,13 +338,13 @@ namespace BuscaMinas
             for (int py = y + 1; py<7; py++)
             {
                 
-                    if (cells[x, py].Value == " " && cells[x, py].State == false)
+                    if (cells[x, py].Value == " " && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();
                       
                 }
-                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && cells[x, py].State == false)
+                    else if (cells[x, py].Value != " " && cells[x, py].Value != "💣" && !cells[x, py].State && !cells[x, py].Flags)
                     {
                         cells[x, py].State = true;
                         cells[x, py].ValuePanel();

@@ -33,13 +33,8 @@ namespace BuscaMinas
         private void PanelCell_OnClick(object sender, EventArgs e)
         {
             //  MessageBox.Show(lblNumber.Text);
-
-            lblNumber.Text = this.Value;
-            this.State = true;
-            panelCell.BackColor = Color.Gray;
-            panelCell.Enabled = false;
-            Form1 form = (Form1)Application.OpenForms["Form1"];
-            form.searchCell(this.x,this.y);
+             
+          
 
         }
         public void ValuePanel()
@@ -64,7 +59,26 @@ namespace BuscaMinas
         {
           //panelCell.BackColor =Color.Gray;
         }
-        
-       
+
+        private void panelCell_Click(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            Form1 form = (Form1)Application.OpenForms["Form1"];
+            if (e.Button == MouseButtons.Left)
+            {
+                lblNumber.Text = this.Value;
+                this.State = true;
+                panelCell.BackColor = Color.Gray;
+                panelCell.Enabled = false;
+                form.searchCell(this.x, this.y);
+            }
+            else
+            {
+                ///Falta crear el metodo para volverla ☠️ y desactivar las banderas
+                ///Falta bloquar las casillas que tienen bandera para que no se pueda abrir 
+                lblNumber.Text = "🚩";
+                this.Flags = true;
+            }
+            
+        }
     }
 }

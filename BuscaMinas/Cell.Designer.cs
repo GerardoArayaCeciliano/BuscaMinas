@@ -53,8 +53,8 @@ namespace BuscaMinas
             this.panelCell.Name = "panelCell";
             this.panelCell.Size = new System.Drawing.Size(66, 48);
             this.panelCell.TabIndex = 1;
-            this.panelCell.Click += new System.EventHandler(this.PanelCell_OnClick);
             this.panelCell.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCell_Paint);
+            this.panelCell.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelCell_Click);
             this.panelCell.MouseLeave += new System.EventHandler(this.PanelCell_OnMouseLeave);
             this.panelCell.MouseHover += new System.EventHandler(this.PanelCell_OnMouseHover);
             // 
