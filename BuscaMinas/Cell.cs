@@ -8,10 +8,12 @@ namespace BuscaMinas
     public partial class Cell : UserControl
     {
         public String Value { get; set; }
-        public bool Flags { get; set; }
+        public bool Flag { get; set; }
         public bool State { get; set; }
-        public int x { get; set; }
-        public int y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+
+
         public Cell()
         {
             InitializeComponent();
@@ -22,21 +24,20 @@ namespace BuscaMinas
         {
             this.Value = Value;
             this.State = State;
-            this.Flags = Flags;
-            this.x = x;
-            this.y = y;
+            this.Flag = Flags;
+            this.X = x;
+            this.Y = y;
         }
 
       
-        public void ValuePanel()
+        public void Discover()
         {
             lblNumber.Text = this.Value;
+            this.State = true;
             panelCell.BackColor = Color.LightGray; ;
             panelCell.Enabled = false;
-
         }
 
-      
 
         private void PanelCell_OnMouseHover(object sender, EventArgs e)
         {// 
@@ -53,17 +54,19 @@ namespace BuscaMinas
             Form1 form = (Form1)Application.OpenForms["Form1"];
             if (e.Button == MouseButtons.Left)
             {
-                lblNumber.Text = this.Value;
-                this.State = true;
-                panelCell.BackColor = Color.Gray;
-                panelCell.Enabled = false;
-                form.searchCell(this.x, this.y);
+                this.Discover();
+                form.SearchCell(this.X, this.Y);
+
+                if (!form.gameStarted)
+                {
+                    form.StartChrono();
+                }
             }
             else
             {
                 ///Falta crear el metodo para volverla ☠️ y desactivar las banderas
                 lblNumber.Text = "🚩";
-                this.Flags = true;
+                this.Flag = true;
             }
             
         }

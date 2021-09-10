@@ -5,17 +5,18 @@ namespace BuscaMinas
 {
     public partial class Form1 : Form
     {
-        Minefield minefield = new Minefield();
-       // private readonly Cell[,] MatCell = new Cell[7, 7];
+        private Minefield minefield = new Minefield();
+        private Chrono chrono;
+        public bool gameStarted;
         public Form1()
         {
-         
+            
             InitializeComponent();
 
             minefield.Build();
             minefield.PrintField();
             InitializeContainer();
-           
+            this.gameStarted = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -28,8 +29,6 @@ namespace BuscaMinas
             {
                 for(int y = 0; y < 7; y++) 
                 {
-                   // MatCell[x, y] = new Cell();
-                    //MatCell[x,y].SetValue(minefield.GetSector(x, y), x, y);
                     containerCell.Controls.Add(minefield.GetSector(x, y));
                 }
             }
@@ -39,12 +38,22 @@ namespace BuscaMinas
         {
 
         }
-        public void searchCell(int x,int y)
+
+        public void SearchCell(int x,int y)
         {
-            minefield.Shearch(x, y);
+            minefield.SearchAround(x, y, 0);
             //LLAMAR EL METODO Para revisar las casillas
            // MessageBox.Show(minefield.getMine(x,y).ToString());
 
         }
+
+        public void StartChrono() 
+        {
+            gameStarted = true;
+            this.chrono = new Chrono(this.chronoDisplay);
+            this.chrono.Start();
+        }
+
+        private void label1_Click(object sender, EventArgs e){}
     }
 }
