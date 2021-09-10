@@ -56,7 +56,7 @@ namespace BuscaMinas
             {
                 this.Discover();
                 form.SearchCell(this.X, this.Y);
-
+                
                 if (!form.gameStarted)
                 {
                     form.StartChrono();

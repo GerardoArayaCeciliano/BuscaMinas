@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace BuscaMinas
 {
     class Minefield
     {
-        
+
+       
         private Cell[,] cells = new Cell[7,7];
+        private int score=0;
+       
 
         public Minefield()
         {
+            
             for (int x = 0; x < 7; x++)
             {
                 for (int y = 0; y < 7; y++)
@@ -166,11 +171,22 @@ namespace BuscaMinas
 
         public void  SearchAround(int x,int y, int profundity)
         {
-            if(Enumerable.Range(0, 7).Contains(x) && Enumerable.Range(0, 7).Contains(y))
+            Form1 form = (Form1)Application.OpenForms["Form1"];
+
+            if (Enumerable.Range(0, 7).Contains(x) && Enumerable.Range(0, 7).Contains(y))
             {
                 if(this.cells[x, y].Value != "💣" && !cells[x, y].Flag && (!cells[x, y].State || profundity == 0)) 
                 {
                     this.cells[x, y].Discover();
+                    this.score = this.score + 100;
+                    form.score(this.score);
+                    //aqui se valida el gane
+                    if (this.score == 4100)
+                    {
+                        this.ShowSolution();
+                        form.win(this.score);
+
+                    }
                     if(this.cells[x, y].Value == " ")
                     {
                         this.SearchAround(x - 1, y - 1, profundity + 1);
@@ -186,9 +202,59 @@ namespace BuscaMinas
 
                     }
                 }
+                /// aqui se valida la derrota
+                if (this.cells[x, y].Value == "💣")
+                {
+                    this.ShowSolution();
+                    form.lose(this.score);
+
+                  
+
+                }
+
             }
             
         }
+
+
+        public void ShowSolution()
+        {
+            for (int x = 0; x < 7; x++)
+            {
+                for (int y = 0; y < 7; y++)
+                {
+                    this.cells[x, y].Discover();
+                }
+            }
+
+
+        }
+
+        public void clearcell()
+        {
+           
+
+            Cell[,] cells = new Cell[7, 7];
+
+            for (int x = 0; x < 7; x++)
+            {
+                for (int y = 0; y < 7; y++)
+                {
+                    cells[x, y] = new Cell();
+                    cells[x, y].SetValue(" ", false, false, x, y);
+                }
+            }
+
+            this.PrintField();
+            this.Build();
+
+        }
+
+
+
+
+
+
 
     }
 
