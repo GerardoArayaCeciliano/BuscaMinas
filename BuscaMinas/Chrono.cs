@@ -46,5 +46,12 @@ namespace BuscaMinas
             this.display.Text = hours + ":" + ((minutes < 10) ? "0" : "") + minutes + " " + ((seconds < 10) ? "0" : "") + seconds;
         }
 
+        public void Dispose() 
+        {
+            Pause();
+            Reset();
+            this.display = null;
+        }
+
     }
 }

@@ -55,8 +55,7 @@ namespace BuscaMinas
             if (e.Button == MouseButtons.Left)
             {
                 this.Discover();
-                form.SearchCell(this.X, this.Y);
-                
+                form.SolveGamerActionEffects(this.X, this.Y);
                 if (!form.gameStarted)
                 {
                     form.StartChrono();

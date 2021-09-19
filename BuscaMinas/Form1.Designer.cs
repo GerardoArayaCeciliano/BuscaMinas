@@ -40,10 +40,9 @@ namespace BuscaMinas
             // containerCell
             // 
             this.containerCell.BackColor = System.Drawing.Color.White;
-            this.containerCell.Location = new System.Drawing.Point(121, 31);
-            this.containerCell.Margin = new System.Windows.Forms.Padding(4);
+            this.containerCell.Location = new System.Drawing.Point(91, 25);
             this.containerCell.Name = "containerCell";
-            this.containerCell.Size = new System.Drawing.Size(703, 487);
+            this.containerCell.Size = new System.Drawing.Size(527, 396);
             this.containerCell.TabIndex = 0;
             this.containerCell.Paint += new System.Windows.Forms.PaintEventHandler(this.containerCell_Paint);
             // 
@@ -51,10 +50,9 @@ namespace BuscaMinas
             // 
             this.chronoDisplay.AutoSize = true;
             this.chronoDisplay.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chronoDisplay.Location = new System.Drawing.Point(964, 50);
-            this.chronoDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.chronoDisplay.Location = new System.Drawing.Point(723, 41);
             this.chronoDisplay.Name = "chronoDisplay";
-            this.chronoDisplay.Size = new System.Drawing.Size(46, 29);
+            this.chronoDisplay.Size = new System.Drawing.Size(34, 23);
             this.chronoDisplay.TabIndex = 1;
             this.chronoDisplay.Text = "--:--";
             this.chronoDisplay.Click += new System.EventHandler(this.label1_Click);
@@ -63,20 +61,22 @@ namespace BuscaMinas
             // 
             this.lbl_message.AutoSize = true;
             this.lbl_message.Font = new System.Drawing.Font("Ravie", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_message.Location = new System.Drawing.Point(915, 163);
+            this.lbl_message.Location = new System.Drawing.Point(686, 132);
+            this.lbl_message.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_message.Name = "lbl_message";
-            this.lbl_message.Size = new System.Drawing.Size(161, 34);
+            this.lbl_message.Size = new System.Drawing.Size(129, 26);
             this.lbl_message.TabIndex = 2;
             this.lbl_message.Text = "Message";
             this.lbl_message.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // btn_retry
             // 
-            this.btn_retry.Location = new System.Drawing.Point(951, 358);
+            this.btn_retry.Location = new System.Drawing.Point(713, 291);
+            this.btn_retry.Margin = new System.Windows.Forms.Padding(2);
             this.btn_retry.Name = "btn_retry";
-            this.btn_retry.Size = new System.Drawing.Size(75, 38);
+            this.btn_retry.Size = new System.Drawing.Size(56, 31);
             this.btn_retry.TabIndex = 3;
-            this.btn_retry.Text = "Re Try";
+            this.btn_retry.Text = "Retry";
             this.btn_retry.UseVisualStyleBackColor = true;
             this.btn_retry.Click += new System.EventHandler(this.btn_retry_Click);
             // 
@@ -84,9 +84,10 @@ namespace BuscaMinas
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Ravie", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(917, 248);
+            this.label1.Location = new System.Drawing.Point(688, 202);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 22);
+            this.label1.Size = new System.Drawing.Size(67, 19);
             this.label1.TabIndex = 4;
             this.label1.Text = "Score:";
             this.label1.Click += new System.EventHandler(this.label1_Click_2);
@@ -94,26 +95,26 @@ namespace BuscaMinas
             // lbl_score
             // 
             this.lbl_score.AutoSize = true;
-            this.lbl_score.Font = new System.Drawing.Font("Ravie", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_score.Location = new System.Drawing.Point(1003, 248);
+            this.lbl_score.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_score.Location = new System.Drawing.Point(752, 202);
+            this.lbl_score.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_score.Name = "lbl_score";
-            this.lbl_score.Size = new System.Drawing.Size(23, 22);
+            this.lbl_score.Size = new System.Drawing.Size(20, 20);
             this.lbl_score.TabIndex = 5;
             this.lbl_score.Text = "0";
             this.lbl_score.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1152, 554);
+            this.ClientSize = new System.Drawing.Size(864, 450);
             this.Controls.Add(this.lbl_score);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_retry);
             this.Controls.Add(this.lbl_message);
             this.Controls.Add(this.chronoDisplay);
             this.Controls.Add(this.containerCell);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

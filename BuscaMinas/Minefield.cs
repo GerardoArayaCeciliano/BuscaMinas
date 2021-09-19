@@ -175,19 +175,14 @@ namespace BuscaMinas
 
             if (Enumerable.Range(0, 7).Contains(x) && Enumerable.Range(0, 7).Contains(y))
             {
-                if(this.cells[x, y].Value != "💣" && !cells[x, y].Flag && (!cells[x, y].State || profundity == 0)) 
+                if (this.cells[x, y].Value != "💣" && !cells[x, y].Flag && (!cells[x, y].State || profundity == 0))
                 {
                     this.cells[x, y].Discover();
-                    this.score = this.score + 100;
-                    form.score(this.score);
-                    //aqui se valida el gane
-                    if (this.score == 4100)
-                    {
-                        this.ShowSolution();
-                        form.win(this.score);
 
-                    }
-                    if(this.cells[x, y].Value == " ")
+                    this.score = this.score + 100;
+                    form.refreshScore(this.score);
+
+                    if (this.cells[x, y].Value == " ")
                     {
                         this.SearchAround(x - 1, y - 1, profundity + 1);
                         this.SearchAround(x, y - 1, profundity + 1);
@@ -199,23 +194,29 @@ namespace BuscaMinas
                         this.SearchAround(x - 1, y + 1, profundity + 1);
                         this.SearchAround(x, y + 1, profundity + 1);
                         this.SearchAround(x + 1, y + 1, profundity + 1);
-
                     }
                 }
-                /// aqui se valida la derrota
-                if (this.cells[x, y].Value == "💣")
-                {
-                    this.ShowSolution();
-                    form.lose(this.score);
-
-                  
-
-                }
-
             }
-            
+
         }
 
+        public void CheckLoss(int x, int y, Form1 form)
+        {
+            if (this.cells[x, y].Value == "💣")
+            {
+                this.ShowSolution();
+                form.lose(this.score);
+            }
+        }
+
+        public void CheckWin(Form1 form)
+        {
+            if (this.score == 4100)
+            {
+                this.ShowSolution();
+                form.win(this.score);
+            }
+        }
 
         public void ShowSolution()
         {
@@ -232,8 +233,6 @@ namespace BuscaMinas
 
         public void clearcell()
         {
-           
-
             Cell[,] cells = new Cell[7, 7];
 
             for (int x = 0; x < 7; x++)

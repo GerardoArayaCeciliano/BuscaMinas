@@ -41,22 +41,23 @@ namespace BuscaMinas
 
         }
 
-        public void SearchCell(int x,int y)
+
+        public void SolveGamerActionEffects(int x,int y)
         {
             minefield.SearchAround(x, y, 0);
-            //LLAMAR EL METODO Para revisar las casillas
-           // MessageBox.Show(minefield.getMine(x,y).ToString());
-
+            minefield.CheckWin(this);
+            minefield.CheckLoss(x, y, this);
         }
 
         public void StartChrono() 
         {
+            if(chrono != null)
+            {
+                chrono.Dispose();
+            }
             gameStarted = true;
             this.chrono = new Chrono(this.chronoDisplay);
             this.chrono.Start();
-           
-
-
         }
 
         public void lose(int score)
@@ -64,7 +65,7 @@ namespace BuscaMinas
             this.lbl_message.Visible = true;
             this.lbl_message.Text = "You lose";
             this.lbl_message.ForeColor = Color.Red;
-            this.score(score);
+            this.refreshScore(score);
             chrono.Pause();
         }
 
@@ -77,7 +78,7 @@ namespace BuscaMinas
             chrono.Pause();
         }
 
-        public void score(int score)
+        public void refreshScore(int score)
         {
             this.lbl_score.Text = score.ToString();
         }
@@ -99,10 +100,7 @@ namespace BuscaMinas
             minefield = new Minefield();
             minefield.clearcell();
             InitializeContainer();
-            chrono.Start();
-            chrono.Reset();
-
-
+            this.StartChrono();
         }
 
         private void label1_Click_2(object sender, EventArgs e)
